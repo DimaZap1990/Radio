@@ -13,6 +13,16 @@ public class RadioTest {
         int actual = cond.getCorrentRadioWave();
         assertEquals(expected, actual);
     }
+    @Test
+    public void checkNumberOfRAdioWave() {
+        Radio Radio = new Radio();
+        assertEquals(10, Radio.getNumberOfRadioWave());
+    }
+    @Test
+    public void checkNumberOfRAdioWaveIfChanche() {
+        Radio Radio = new Radio(5);
+        assertEquals(5, Radio.getNumberOfRadioWave());
+    }
 
     @Test
     public void radioTestOutTheMinConner() {
@@ -140,7 +150,7 @@ public class RadioTest {
     @Test
     public void radioTestOutTheMaxVolume() {
         Radio cond = new Radio();
-        cond.setRadioVolume(22);
+        cond.setRadioVolume(101);
         int expected = 0;
         int actual = cond.getCorrentRadioVolume();
         assertEquals(expected, actual);
@@ -165,9 +175,9 @@ public class RadioTest {
     @Test
     public void increaseRadioVolumeInMaxCorner() {
         Radio cond = new Radio();
-        cond.setRadioVolume(10);
+        cond.setRadioVolume(100);
         cond.setIncreaseRadioVolume();
-        int expected = 10;
+        int expected = 100;
         int actual = cond.getCorrentRadioVolume();
         assertEquals(expected, actual);
     }
@@ -189,4 +199,6 @@ public class RadioTest {
         int actual = cond.getCorrentRadioVolume();
         assertEquals(expected, actual);
     }
-}
+
+    }
+

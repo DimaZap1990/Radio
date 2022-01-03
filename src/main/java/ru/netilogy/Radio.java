@@ -2,14 +2,23 @@ package ru.netilogy;
 
 public class Radio {
     private int radioWave;
-    private int maxRadioWave = 9;
-    private int minRadioWave = 0;
-    private int maxRadioVolume = 10;
+    private int numberOfRadioWave=10;
+    private int maxRadioWave = numberOfRadioWave-1;
+    private int minRadioWave =0;
+    private int maxRadioVolume = 100;
     private int minRadioVolume = 0;
+
+    public Radio() {
+    }
+
+    public Radio(int numberOfRadioWave) {
+        this.numberOfRadioWave = numberOfRadioWave;
+    }
 
     public int getCorrentRadioWave() {
         return radioWave;
     }
+    public int getNumberOfRadioWave() {return numberOfRadioWave;}
 
     public void setRadioWave(int radioWave) {
         if (radioWave < minRadioWave) {
@@ -32,25 +41,24 @@ public class Radio {
     }
 
     public int setIncreaseRadioWave() {
-        if (radioWave < maxRadioWave){
+        if (radioWave < maxRadioWave) {
             radioWave = radioWave + 1;
-        }
-        else  {
+        } else {
 
-            radioWave=0;}
+            radioWave = 0;
+        }
         return radioWave;
-        }
-
+    }
 
 
     public int setDecreaseRadioWave() {
         if (radioWave > minRadioWave) {
             radioWave = radioWave - 1;
+        } else {
+            radioWave = 9;
         }
-        else  {
-            radioWave=9;}
         return radioWave;
-        }
+    }
 
 
     private int radioVolume;
@@ -73,8 +81,8 @@ public class Radio {
     public void setIncreaseRadioVolume() {
         if (radioVolume < maxRadioVolume) {
             radioVolume = radioVolume + 1;
-        }else {
-            radioVolume= maxRadioVolume;
+        } else {
+            radioVolume = maxRadioVolume;
         }
     }
 
@@ -82,9 +90,8 @@ public class Radio {
     public void setDecreaseRadioVolume() {
         if (radioVolume > minRadioVolume) {
             radioVolume = radioVolume - 1;
-        }
-        else {
-            radioVolume=minRadioVolume;
+        } else {
+            radioVolume = minRadioVolume;
         }
     }
 }

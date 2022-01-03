@@ -2,16 +2,20 @@ package ru.netilogy;
 
 public class Radio {
     private int radioWave;
+    private int maxRadioWave = 9;
+    private int minRadioWave = 0;
+    private int maxRadioVolume = 10;
+    private int minRadioVolume = 0;
 
     public int getCorrentRadioWave() {
         return radioWave;
     }
 
     public void setRadioWave(int radioWave) {
-        if (radioWave < 0) {
+        if (radioWave < minRadioWave) {
             return;
         }
-        if (radioWave > 9) {
+        if (radioWave > maxRadioWave) {
             return;
         }
 
@@ -19,27 +23,35 @@ public class Radio {
     }
 
     public void setMaxRadioWave() {
-        radioWave = 9;
+        radioWave = maxRadioWave;
     }
 
     public void setMinRadioWave() {
-        radioWave = 0;
+        radioWave = minRadioWave;
 
     }
 
-    public void setIncreaseRadioWave() {
-        if (radioWave < 9) {
+    public int setIncreaseRadioWave() {
+        if (radioWave < maxRadioWave){
             radioWave = radioWave + 1;
         }
+        else  {
 
-    }
-
-    public void setDecreaseRadioWave() {
-        if (radioWave > 0) {
-            radioWave = radioWave - 1;
+            radioWave=0;}
+        return radioWave;
         }
 
-    }
+
+
+    public int setDecreaseRadioWave() {
+        if (radioWave > minRadioWave) {
+            radioWave = radioWave - 1;
+        }
+        else  {
+            radioWave=9;}
+        return radioWave;
+        }
+
 
     private int radioVolume;
 
@@ -48,10 +60,10 @@ public class Radio {
     }
 
     public void setRadioVolume(int radioVolume) {
-        if (radioVolume < 0) {
+        if (radioVolume < minRadioVolume) {
             return;
         }
-        if (radioVolume > 10) {
+        if (radioVolume > maxRadioVolume) {
             return;
         }
         this.radioVolume = radioVolume;
@@ -59,15 +71,20 @@ public class Radio {
 
 
     public void setIncreaseRadioVolume() {
-        if (radioVolume < 10) {
+        if (radioVolume < maxRadioVolume) {
             radioVolume = radioVolume + 1;
+        }else {
+            radioVolume= maxRadioVolume;
         }
     }
 
 
     public void setDecreaseRadioVolume() {
-        if (radioVolume > 0) {
+        if (radioVolume > minRadioVolume) {
             radioVolume = radioVolume - 1;
+        }
+        else {
+            radioVolume=minRadioVolume;
         }
     }
 }

@@ -26,15 +26,24 @@ public class RadioTest {
     @Test
     public void increaseRadioWave() {
         Radio cond = new Radio();
-        cond.setRadioWave(7);
+        cond.setRadioWave(8);
         cond.setIncreaseRadioWave();
-        int expected = 8;
+        int expected = 9;
         int actual = cond.getCorrentRadioWave();
         assertEquals(expected, actual);
     }
 
     @Test
-    public void increaseRadioWaveInOutMaxCorner() {
+    public void increaseRadioWaveInMaxCorner() {
+        Radio cond = new Radio();
+        cond.setRadioWave(9);
+        cond.setIncreaseRadioWave();
+        int expected = 0;
+        int actual = cond.getCorrentRadioWave();
+        assertEquals(expected, actual);
+    }
+    @Test
+    public void increaseRadioWaveInCorner() {
         Radio cond = new Radio();
         cond.setRadioWave(10);
         cond.setIncreaseRadioWave();
@@ -43,22 +52,68 @@ public class RadioTest {
         assertEquals(expected, actual);
     }
 
+
     @Test
     public void increaseRadioWaveInOutMinCorner() {
         Radio cond = new Radio();
-        cond.setRadioWave(-2);
+        cond.setRadioWave(0);
         cond.setIncreaseRadioWave();
         int expected = 1;
         int actual = cond.getCorrentRadioWave();
         assertEquals(expected, actual);
     }
+    @Test
+    public void increaseRadioWaveInMinCorner() {
+        Radio cond = new Radio();
+        cond.setRadioWave(-1);
+        cond.setIncreaseRadioWave();
+        int expected = 1;
+        int actual = cond.getCorrentRadioWave();
+        assertEquals(expected, actual);
+    }
+    @Test
+    public void increaseRadioWaveInInside() {
+        Radio cond = new Radio();
+        cond.setRadioWave(1);
+        cond.setIncreaseRadioWave();
+        int expected = 2;
+        int actual = cond.getCorrentRadioWave();
+        assertEquals(expected, actual);
+    }
+    @Test
+    public void increaseRadioWaveInCenter() {
+        Radio cond = new Radio();
+        cond.setRadioWave(5);
+        cond.setIncreaseRadioWave();
+        int expected = 6;
+        int actual = cond.getCorrentRadioWave();
+        assertEquals(expected, actual);
+    }
 
     @Test
-    public void DecreaseRadioWave() {
+    public void DecreaseRadioWaveInMinCorner() {
         Radio cond = new Radio();
-        cond.setRadioWave(2);
+        cond.setRadioWave(0);
         cond.setDecreaseRadioWave();
-        int expected = 1;
+        int expected = 9;
+        int actual = cond.getCorrentRadioWave();
+        assertEquals(expected, actual);
+    }
+    @Test
+    public void DecreaseRadioWaveInCenter() {
+        Radio cond = new Radio();
+        cond.setRadioWave(5);
+        cond.setDecreaseRadioWave();
+        int expected = 4;
+        int actual = cond.getCorrentRadioWave();
+        assertEquals(expected, actual);
+    }
+    @Test
+    public void DecreaseRadioWaveInOutMaxCorner() {
+        Radio cond = new Radio();
+        cond.setRadioWave(10);
+        cond.setDecreaseRadioWave();
+        int expected = 9;
         int actual = cond.getCorrentRadioWave();
         assertEquals(expected, actual);
     }
@@ -108,11 +163,29 @@ public class RadioTest {
         assertEquals(expected, actual);
     }
     @Test
+    public void increaseRadioVolumeInMaxCorner() {
+        Radio cond = new Radio();
+        cond.setRadioVolume(10);
+        cond.setIncreaseRadioVolume();
+        int expected = 10;
+        int actual = cond.getCorrentRadioVolume();
+        assertEquals(expected, actual);
+    }
+    @Test
     public void DecreaseRadioVolume() {
         Radio cond = new Radio();
         cond.setRadioVolume(2);
         cond.setDecreaseRadioVolume();
         int expected = 1;
+        int actual = cond.getCorrentRadioVolume();
+        assertEquals(expected, actual);
+    }
+    @Test
+    public void DecreaseRadioVolumeInMinCorner() {
+        Radio cond = new Radio();
+        cond.setRadioVolume(0);
+        cond.setDecreaseRadioVolume();
+        int expected = 0;
         int actual = cond.getCorrentRadioVolume();
         assertEquals(expected, actual);
     }

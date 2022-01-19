@@ -2,9 +2,9 @@ package ru.netilogy;
 
 public class Radio {
     private int radioWave;
-    private int numberOfRadioWave=10;
-    private int maxRadioWave = numberOfRadioWave-1;
-    private int minRadioWave =0;
+    private int numberOfRadioWave = 10;
+    private int minRadioWave = 0;
+    private int radioVolume;
     private int maxRadioVolume = 100;
     private int minRadioVolume = 0;
 
@@ -18,13 +18,16 @@ public class Radio {
     public int getCorrentRadioWave() {
         return radioWave;
     }
-    public int getNumberOfRadioWave() {return numberOfRadioWave;}
+
+    public int getNumberOfRadioWave() {
+        return numberOfRadioWave;
+    }
 
     public void setRadioWave(int radioWave) {
         if (radioWave < minRadioWave) {
             return;
         }
-        if (radioWave > maxRadioWave) {
+        if (radioWave > numberOfRadioWave - 1) {
             return;
         }
 
@@ -32,7 +35,7 @@ public class Radio {
     }
 
     public void setMaxRadioWave() {
-        radioWave = maxRadioWave;
+        radioWave = numberOfRadioWave - 1;
     }
 
     public void setMinRadioWave() {
@@ -41,7 +44,7 @@ public class Radio {
     }
 
     public int setIncreaseRadioWave() {
-        if (radioWave < maxRadioWave) {
+        if (radioWave < numberOfRadioWave - 1) {
             radioWave = radioWave + 1;
         } else {
 
@@ -60,8 +63,6 @@ public class Radio {
         return radioWave;
     }
 
-
-    private int radioVolume;
 
     public int getCorrentRadioVolume() {
         return radioVolume;
